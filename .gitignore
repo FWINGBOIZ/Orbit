@@ -12,6 +12,7 @@ out
 *.iws
 *.iml
 .idea
+classes
 
 # gradle
 build
@@ -23,3 +24,15 @@ run
 
 # Files from Forge MDK
 forge*changelog.txt
+libs
+
+# custom
+logs
+
+*.jks
+# This file contains OS-specific path separators and therefore isn't particularly useful in git
+src/generated/resources/.cache/cache
+# Local gradle customizations (e.g. added mods)
+custom.gradle
+# Flatdir repo for mods not available on a proper Maven server
+flatdir
