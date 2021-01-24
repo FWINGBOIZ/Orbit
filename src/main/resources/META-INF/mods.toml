@@ -30,7 +30,7 @@ credits="" #optional
 authors="Arekenaten, Gchagan36" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Take controll of the final frontier with Orbitals. Want to generate near-infinite FE? Want to rain destruction down upon your foes? Want to stop others from raining destruction down on you? This is where you start.
+Take control of the final frontier with Orbitals. Want to generate near-infinite FE? Want to rain destruction down upon your foes? Want to stop others from raining destruction down on you? This is where you start.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.fwborbit]] #optional
