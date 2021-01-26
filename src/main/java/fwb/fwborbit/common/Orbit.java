@@ -1,5 +1,9 @@
 package fwb.fwborbit.common;
 
+import fwb.fwborbit.common.blocks.OBlockTypes;
+import fwb.fwborbit.common.items.OItemTypes;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,6 +24,14 @@ public class Orbit
         instance = this;
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+        LOGGER.debug("Hello from Example Mod!");
+
+        final ModLoadingContext modLoadingContext = ModLoadingContext.get();
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        // Register Deferred Registers (Does not need to be before Configs)
+        OBlockTypes.BLOCKS.register(modEventBus);
+        //OItemTypes.ITEMS.register(modEventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {

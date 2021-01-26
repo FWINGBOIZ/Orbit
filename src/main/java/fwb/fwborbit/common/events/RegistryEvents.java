@@ -1,7 +1,7 @@
 package fwb.fwborbit.common.events;
 
 import fwb.fwborbit.common.Orbit;
-import fwb.fwborbit.common.lists.ItemList;
+import fwb.fwborbit.common.items.OItemTypes;
 
 import org.apache.logging.log4j.Logger;
 
@@ -22,7 +22,8 @@ public class RegistryEvents {
     @SubscribeEvent
     public static void registerItems(final RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(
-           ItemList.tutorial_item = new Item(new Item.Properties().group(ItemGroup.MISC)).setRegistryName(location("tutorial_item")) 
+           OItemTypes.tutorial_item = new Item(new Item.Properties().group(ItemGroup.MISC)).setRegistryName(location("tutorial_item")),
+           OItemTypes.coal_generator_item = new Item(new Item.Properties().group(ItemGroup.MISC)).setRegistryName(location("coal_generator_item"))
         );
     }
 
