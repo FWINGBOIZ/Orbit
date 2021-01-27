@@ -1,5 +1,6 @@
 {
-    "item.fwborbit.tutorial_item": "Orange Stick",
-    "item.fwborbit.coal_generator": "Coal Generator",
+    "item.fwborbit.orbit_stick": "Orbit Stick",
+    "itemGroup.fwborbit": "Orbit",
+    "item.fwborbit.coal_generator_item": "Coal Generator",
     "block.fwborbit.coal_generator": "Coal Generator"
 }

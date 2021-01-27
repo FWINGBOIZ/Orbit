@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "fwborbit:item/tutorial_item"
+        "layer0": "fwborbit:item/orbit_stick"
     }
 }
