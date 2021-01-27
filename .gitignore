@@ -28,6 +28,7 @@ libs
 
 # custom
 logs
+*.log
 
 *.jks
 # This file contains OS-specific path separators and therefore isn't particularly useful in git

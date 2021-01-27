@@ -1,3 +1,4 @@
 {
-    "item.fwborbit.tutorial_item": "Orange Stick"
+    "item.fwborbit.orbit_stick": "Orbit Stick",
+    "itemGroup.fwborbit": "Orbit"
 }
