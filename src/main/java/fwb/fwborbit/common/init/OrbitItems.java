@@ -1,6 +1,7 @@
 package fwb.fwborbit.common.init;
 
 import fwb.fwborbit.common.Orbit;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.ObjectHolder;
 
@@ -15,5 +16,5 @@ import net.minecraftforge.registries.ObjectHolder;
 public final class OrbitItems {
 
     public static final Item orbit_stick = null;
-    public static final Item coal_generator_item = null;
+    public static final BlockItem coal_generator = null;
 }

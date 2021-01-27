@@ -1,9 +1,11 @@
 package fwb.fwborbit.common;
 
+import fwb.fwborbit.common.init.OrbitBlocks;
 import fwb.fwborbit.common.init.OrbitItemGroups;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -27,8 +29,9 @@ public class OrbitEventSubscriber {
     public static void onRegisterItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(
             setup(new Item(new Item.Properties().group(OrbitItemGroups.ORBIT_ITEM_GROUP)), "orbit_stick"),
-            setup(new Item(new Item.Properties().group(OrbitItemGroups.ORBIT_ITEM_GROUP)), "coal_generator_item")
+            setup(new BlockItem(OrbitBlocks.coal_generator, new Item.Properties().group(OrbitItemGroups.ORBIT_ITEM_GROUP)), OrbitBlocks.coal_generator.getRegistryName())
         );
+        LOGGER.debug("Registered Items");
     }
 
     @SubscribeEvent
@@ -36,7 +39,11 @@ public class OrbitEventSubscriber {
         event.getRegistry().registerAll(
             setup(new Block(Block.Properties.create(Material.ROCK, MaterialColor.GRAY)), "coal_generator")
         );
+        LOGGER.debug("Registered Blocks");
     }
+
+    @SubscribeEvent
+    public static void onRegisterBlockItems(RegistryEvent.Register<Item> event) {}
 
     /**
      * Overloads the setup method to allow a string Name as input.

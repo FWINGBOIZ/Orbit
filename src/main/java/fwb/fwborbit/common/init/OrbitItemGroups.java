@@ -7,6 +7,7 @@ import javax.annotation.Nonnull;
 import fwb.fwborbit.common.Orbit;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.registries.ObjectHolder;
 
 public final class OrbitItemGroups {
 
