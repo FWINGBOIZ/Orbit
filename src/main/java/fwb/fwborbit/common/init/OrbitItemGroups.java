@@ -10,10 +10,12 @@ import net.minecraft.item.ItemStack;
 
 public final class OrbitItemGroups {
 
+    /* Use this when you need an item group for something */
     public static final ItemGroup MOD_ITEM_GROUP = new OrbitItemGroup(Orbit.MOD_ID, () -> new ItemStack(OrbitItems.orbit_stick));
 
     public static class OrbitItemGroup extends ItemGroup {
        
+        /* Below here is functional programming stuff involving suppliers. I don't know, look it up. */
         @Nonnull
         private final Supplier<ItemStack> iconSupplier;
 
