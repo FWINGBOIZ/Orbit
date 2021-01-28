@@ -1,7 +1,7 @@
 package fwb.fwborbit.common.blocks.powergen;
 
 import fwb.fwborbit.common.Orbit;
-import fwb.fwborbit.common.init.OrbitTileEntityTypes;
+import fwb.fwborbit.common.Registration;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
@@ -67,7 +67,7 @@ public class CoalGeneratorBlock extends HorizontalBlock {
 
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return OrbitTileEntityTypes.coal_generator.create();
+        return Registration.COAL_GENERATOR_TILE.get().create();
     }
 
 }

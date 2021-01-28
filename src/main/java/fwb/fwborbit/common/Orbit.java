@@ -13,5 +13,6 @@ public final class Orbit
 
     public Orbit() {
         LOGGER.debug("Orbit mod loaded");
+        Registration.init();
     }
 }

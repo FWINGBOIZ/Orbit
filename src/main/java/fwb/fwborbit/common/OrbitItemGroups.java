@@ -1,10 +1,11 @@
-package fwb.fwborbit.common.init;
+package fwb.fwborbit.common;
 
 import java.util.function.Supplier;
 
 import javax.annotation.Nonnull;
 
 import fwb.fwborbit.common.Orbit;
+import fwb.fwborbit.common.Registration;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.registries.ObjectHolder;
@@ -12,7 +13,7 @@ import net.minecraftforge.registries.ObjectHolder;
 public final class OrbitItemGroups {
 
     /* Use this when you need an item group for something */
-    public static final ItemGroup ORBIT_ITEM_GROUP = new OrbitItemGroup(Orbit.MOD_ID, () -> new ItemStack(OrbitItems.orbit_stick));
+    public static final ItemGroup ORBIT_ITEM_GROUP = new OrbitItemGroup(Orbit.MOD_ID, () -> new ItemStack(Registration.ORBIT_STICK.get()));
 
     public static class OrbitItemGroup extends ItemGroup {
 
