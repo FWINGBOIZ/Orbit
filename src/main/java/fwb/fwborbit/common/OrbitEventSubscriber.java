@@ -3,11 +3,13 @@ package fwb.fwborbit.common;
 import fwb.fwborbit.common.blocks.powergen.CoalGeneratorBlock;
 import fwb.fwborbit.common.init.OrbitBlocks;
 import fwb.fwborbit.common.init.OrbitItemGroups;
+import fwb.fwborbit.common.tileentity.CoalGeneratorTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -44,7 +46,11 @@ public class OrbitEventSubscriber {
     }
 
     @SubscribeEvent
-    public static void onRegisterBlockItems(RegistryEvent.Register<Item> event) {}
+    public static void onRegisterTileEntityTypes(RegistryEvent.Register<TileEntityType<?>> event) {
+        event.getRegistry().registerAll(
+            setup(TileEntityType.Builder.create(CoalGeneratorTileEntity::new, OrbitBlocks.coal_generator).build(null), "coal_generator")
+        );
+    }
 
     /**
      * Overloads the setup method to allow a string Name as input.
