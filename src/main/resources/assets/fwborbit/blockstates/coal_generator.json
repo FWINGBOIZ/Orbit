@@ -1,5 +1,8 @@
 {
-  "variants": {
-    "":	{ "model": "fwborbit:block/coal_generator" }
-  }
+    "variants": {
+        "facing=north": { "model": "fwborbit:block/coal_generator", "y": 0 },
+        "facing=south": { "model": "fwborbit:block/coal_generator", "y": 180 },
+        "facing=west":  { "model": "fwborbit:block/coal_generator", "y": 270 },
+        "facing=east":  { "model": "fwborbit:block/coal_generator", "y": 90 }
+    }
 }

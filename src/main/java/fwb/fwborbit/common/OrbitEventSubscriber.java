@@ -1,5 +1,6 @@
 package fwb.fwborbit.common;
 
+import fwb.fwborbit.common.blocks.powergen.CoalGeneratorBlock;
 import fwb.fwborbit.common.init.OrbitBlocks;
 import fwb.fwborbit.common.init.OrbitItemGroups;
 import net.minecraft.block.Block;
@@ -37,7 +38,7 @@ public class OrbitEventSubscriber {
     @SubscribeEvent
     public static void onRegisterBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll(
-            setup(new Block(Block.Properties.create(Material.ROCK, MaterialColor.GRAY)), "coal_generator")
+            setup(new CoalGeneratorBlock(Block.Properties.create(Material.ROCK, MaterialColor.GRAY)), "coal_generator")
         );
         LOGGER.debug("Registered Blocks");
     }
