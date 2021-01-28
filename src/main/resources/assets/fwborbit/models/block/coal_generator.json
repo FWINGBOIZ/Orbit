@@ -1,0 +1,6 @@
+{
+  "parent": "block/furnace",
+  "textures": {
+    "front": "fwborbit:block/coal_generator_front"
+  }
+}
