@@ -1,5 +1,6 @@
 package fwb.fwborbit.common;
 
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,5 +15,7 @@ public final class Orbit
     public Orbit() {
         LOGGER.debug("Orbit mod loaded");
         Registration.init();
+
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientSetup::init);
     }
 }
