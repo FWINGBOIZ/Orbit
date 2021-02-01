@@ -1,5 +1,6 @@
 package fwb.fwborbit.common.containers;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import fwb.fwborbit.common.Orbit;
 import fwb.fwborbit.common.Registration;
 import net.minecraft.entity.player.PlayerEntity;
@@ -80,31 +81,39 @@ public class CoalGeneratorContainer extends Container {
 
     @Override
     public ItemStack transferStackInSlot(PlayerEntity player, int index) {
+        Orbit.LOGGER.debug("Index is " + index);
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
         if (slot != null && slot.getHasStack()) {
             ItemStack stack = slot.getStack();
             itemStack = stack.copy();
             if (index == 0) {
+                Orbit.LOGGER.debug("Index == 0");
                 if (!this.mergeItemStack(stack, 1, 37, true)) {
+                    Orbit.LOGGER.debug("ItemStack Empty");
                     return ItemStack.EMPTY;
                 }
                 slot.onSlotChange(stack, itemStack);
             }
             else {
                 if (index < 28) {
+                    Orbit.LOGGER.debug("Index < 28 ");
                     if (!this.mergeItemStack(stack, 27, 37, false)) {
+                        Orbit.LOGGER.debug("ItemStack Empty");
                         return ItemStack.EMPTY;
                     }
                 }
                 else if (index < 37 && !this.mergeItemStack(stack, 0, 28, false)) {
+                    Orbit.LOGGER.debug("Index < 37 and ItemStack Empty");
                     return ItemStack.EMPTY;
                 }
             }
             if (stack.isEmpty()) {
+                Orbit.LOGGER.debug("Stack is empty");
                 slot.putStack(ItemStack.EMPTY);
             }
             else {
+                Orbit.LOGGER.debug("Stack changed");
                 slot.onSlotChanged();
             }
             if (stack.getCount() == itemStack.getCount()) {
