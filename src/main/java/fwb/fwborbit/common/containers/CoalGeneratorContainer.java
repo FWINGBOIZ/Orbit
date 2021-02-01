@@ -6,6 +6,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.Slot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
@@ -31,11 +34,11 @@ public class CoalGeneratorContainer extends Container {
                 addSlot(new SlotItemHandler(h, 0,64, 124));
             });
         }
-        layoutPlayerInventorySlots(10, 70);
+        layoutGui(8, 84, 80, 59);
     }
 
     @Override
-    public boolean canInteractWith(PlayerEntity playerIn) {
+    public boolean canInteractWith(PlayerEntity player) {
         return isWithinUsableDistance(IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos()), playerEntity, Registration.COAL_GENERATOR.get());
     }
 
@@ -60,8 +63,55 @@ public class CoalGeneratorContainer extends Container {
         // Player inventory
         addSlotBox(playerInventory, 9, leftCol, topRow, 9, 18, 3, 18);
 
-        //Hotbar
+        // Hotbar
         topRow += 58;
         addSlotRange(playerInventory, 0, leftCol, topRow, 9, 18);
+    }
+
+    private void layoutCoalGeneratorSlots(int leftCol, int topRow) {
+        // Coal generator input slot
+        addSlotBox(playerInventory, 36, leftCol, topRow, 1, 18, 1, 18);
+    }
+
+    private void layoutGui(int invLeftCol, int invTopRow, int cgLeftCol, int cgTopRow) {
+        layoutPlayerInventorySlots(invLeftCol, invTopRow);
+        layoutCoalGeneratorSlots(cgLeftCol, cgTopRow);
+    }
+
+    @Override
+    public ItemStack transferStackInSlot(PlayerEntity player, int index) {
+        ItemStack itemStack = ItemStack.EMPTY;
+        Slot slot = this.inventorySlots.get(index);
+        if (slot != null && slot.getHasStack()) {
+            ItemStack stack = slot.getStack();
+            itemStack = stack.copy();
+            if (index == 0) {
+                if (!this.mergeItemStack(stack, 1, 37, true)) {
+                    return ItemStack.EMPTY;
+                }
+                slot.onSlotChange(stack, itemStack);
+            }
+            else {
+                if (index < 28) {
+                    if (!this.mergeItemStack(stack, 27, 37, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                else if (index < 37 && !this.mergeItemStack(stack, 0, 28, false)) {
+                    return ItemStack.EMPTY;
+                }
+            }
+            if (stack.isEmpty()) {
+                slot.putStack(ItemStack.EMPTY);
+            }
+            else {
+                slot.onSlotChanged();
+            }
+            if (stack.getCount() == itemStack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+            slot.onTake(player, stack);
+        }
+        return itemStack;
     }
 }
