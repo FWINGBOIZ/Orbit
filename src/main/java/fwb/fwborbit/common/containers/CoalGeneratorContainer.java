@@ -6,14 +6,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.extensions.IForgeItem;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -76,7 +74,6 @@ public class CoalGeneratorContainer extends Container {
 
     @Override
     public ItemStack transferStackInSlot(PlayerEntity player, int index) {
-        Orbit.LOGGER.debug("Index is " + index);
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
         if (slot != null && slot.getHasStack()) {
@@ -89,7 +86,7 @@ public class CoalGeneratorContainer extends Container {
                 slot.onSlotChange(stack, itemStack);
             }
             else {
-                if (stack.getBurnTime() > 0) {
+                if (ForgeHooks.getBurnTime(stack) > 0) {
                     if (!this.mergeItemStack(stack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
